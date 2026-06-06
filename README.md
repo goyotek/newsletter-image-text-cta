@@ -1,4 +1,4 @@
-# Dummy Composer Block for Newsletter
+# Custom Blocks for Composer Block for Newsletter
 
 This is a really simple example on how to create and register a new block for the
 Newsletter Composer.
