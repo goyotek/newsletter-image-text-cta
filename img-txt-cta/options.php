@@ -10,17 +10,11 @@
 
 <?php $fields->text('title', 'Title') ?>
 
-<?php $fields->number('title_padding_top', 'Title Padding Top (px)', ['default' => 0]) ?>
-<?php $fields->number('title_padding_right', 'Title Padding Right (px)', ['default' => 0]) ?>
-<?php $fields->number('title_padding_bottom', 'Title Padding Bottom (px)', ['default' => 20]) ?>
-<?php $fields->number('title_padding_left', 'Title Padding Left (px)', ['default' => 0]) ?>
+<?php $fields->text('title_padding', 'Title Padding (CSS format: top right bottom left)', ['default' => '0 0 20px 0']) ?>
 
 <?php $fields->textarea('text', 'Text') ?>
 
-<?php $fields->number('text_padding_top', 'Text Padding Top (px)', ['default' => 0]) ?>
-<?php $fields->number('text_padding_right', 'Text Padding Right (px)', ['default' => 0]) ?>
-<?php $fields->number('text_padding_bottom', 'Text Padding Bottom (px)', ['default' => 20]) ?>
-<?php $fields->number('text_padding_left', 'Text Padding Left (px)', ['default' => 0]) ?>
+<?php $fields->text('text_padding', 'Text Padding (CSS format: top right bottom left)', ['default' => '0 0 20px 0']) ?>
 
 <?php $fields->media('image', 'Image') ?>
 

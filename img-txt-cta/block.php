@@ -93,11 +93,27 @@ if (!empty($options['image']['id'])) {
                 <!-- Image -->
                 <?php if ($media) echo TNP_Composer::image($media) ?>
 
-                <!-- Title with padding -->
-                <h1 inline-class="title" style="padding: <?php echo esc_attr($options['title_padding_top']); ?>px <?php echo esc_attr($options['title_padding_right']); ?>px <?php echo esc_attr($options['title_padding_bottom']); ?>px <?php echo esc_attr($options['title_padding_left']); ?>px;"><?php echo $options['title']?></h1>
+                <!-- Title with padding container -->
+                <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 20px;">
+                    <tbody>
+                        <tr>
+                            <td style="padding: <?php echo esc_attr($options['title_padding'] ?? '0 0 20px 0'); ?>;">
+                                <h1 inline-class="title"><?php echo $options['title'] ?></h1>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                <!-- Text with padding -->
-                <p inline-class="text" style="padding: <?php echo esc_attr($options['text_padding_top']); ?>px <?php echo esc_attr($options['text_padding_right']); ?>px <?php echo esc_attr($options['text_padding_bottom']); ?>px <?php echo esc_attr($options['text_padding_left']); ?>px;"><?php echo $options['text']?></p>
+                <!-- Text with padding container -->
+                <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 20px;">
+                    <tbody>
+                        <tr>
+                            <td style="padding: <?php echo esc_attr($options['text_padding'] ?? '0 0 20px 0'); ?>;">
+                                <p inline-class="text"><?php echo $options['text'] ?></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <!-- Button -->
                 <?php if (!empty($options['button_text'])): ?>
