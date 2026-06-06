@@ -94,10 +94,10 @@ if (!empty($options['image']['id'])) {
                 <?php if ($media) echo TNP_Composer::image($media) ?>
 
                 <!-- Title with padding -->
-                <h1 inline-class="title" style="margin: <?php echo esc_attr($options['title_padding_top']); ?>px 0 <?php echo esc_attr($options['title_padding_bottom']); ?>px 0;"><?php echo $options['title']?></h1>
+                <h1 inline-class="title" style="padding: <?php echo esc_attr($options['title_padding_top']); ?>px <?php echo esc_attr($options['title_padding_right']); ?>px <?php echo esc_attr($options['title_padding_bottom']); ?>px <?php echo esc_attr($options['title_padding_left']); ?>px;"><?php echo $options['title']?></h1>
 
                 <!-- Text with padding -->
-                <p inline-class="text" style="margin: <?php echo esc_attr($options['text_padding_top']); ?>px 0 <?php echo esc_attr($options['text_padding_bottom']); ?>px 0;"><?php echo $options['text']?></p>
+                <p inline-class="text" style="padding: <?php echo esc_attr($options['text_padding_top']); ?>px <?php echo esc_attr($options['text_padding_right']); ?>px <?php echo esc_attr($options['text_padding_bottom']); ?>px <?php echo esc_attr($options['text_padding_left']); ?>px;"><?php echo $options['text']?></p>
 
                 <!-- Button -->
                 <?php if (!empty($options['button_text'])): ?>
