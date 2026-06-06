@@ -1,11 +1,9 @@
 <?php
 /*
   Plugin Name: Newsletter - Custom Blocks
-  Plugin URI: https://www.thenewsletterplugin.com
   Description: Custom blocks for the Newsletter composer
   Version: 1.0.0
-  Author: The Newsletter Team
-  Author URI: https://www.thenewsletterplugin.com
+  Author: Gregor Kleczkowski
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
   Text Domain: newsletter-custom-blocks
   License: GPLv2 or later
