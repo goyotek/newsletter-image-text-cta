@@ -1,8 +1,8 @@
 <?php
 /*
- * Name: Dummy
+ * Name: Image Text CTA
  * Section: content
- * Description: A dummy block to learn how to code them
+ * Description: A block with an image, title, subtitle, text, and a CTA button
  */
 
 /* @var $options array */
@@ -74,12 +74,8 @@ if (!empty($options['image']['id'])) {
 // The attribute "inline-class" is then replaced with a "style" attribute with all rules of the referenced class. 
 ?>
 
-<h1 inline-class="title"><?php echo $options['title']?></h1>
-
-<?php
-// This methos deal with CSS, attributes, link and so on. 
-?>
-
 <?php if ($media) echo TNP_Composer::image($media) ?>
+
+<h1 inline-class="title"><?php echo $options['title']?></h1>
 
 <p inline-class="text"><?php echo $options['text']?></p>
