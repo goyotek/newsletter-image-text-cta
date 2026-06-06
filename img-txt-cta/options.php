@@ -10,9 +10,25 @@
 
 <?php $fields->text('title', 'Title') ?>
 
+<?php $fields->number('title_padding_top', 'Title Padding Top (px)', ['default' => 0]) ?>
+<?php $fields->number('title_padding_bottom', 'Title Padding Bottom (px)', ['default' => 20]) ?>
+
 <?php $fields->textarea('text', 'Text') ?>
 
+<?php $fields->number('text_padding_top', 'Text Padding Top (px)', ['default' => 0]) ?>
+<?php $fields->number('text_padding_bottom', 'Text Padding Bottom (px)', ['default' => 20]) ?>
+
 <?php $fields->media('image', 'Image') ?>
+
+<?php $fields->text('button_text', 'Button Text') ?>
+
+<?php $fields->url('button_link', 'Button Link') ?>
+
+<?php $fields->color('button_background', 'Button Background Color') ?>
+
+<?php $fields->color('button_color', 'Button Text Color') ?>
+
+<?php $fields->font('button_font', 'Button Font', ['family_default' => true, 'size_default' => true, 'weight_default' => true, 'color_default' => false]) ?>
 
 <?php 
 // Two font selector, see the block.php on how to use them with the default newsletter values and inline style 
