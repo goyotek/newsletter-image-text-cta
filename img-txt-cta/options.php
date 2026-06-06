@@ -28,6 +28,10 @@
 
 <?php $fields->color('button_color', 'Button Text Color') ?>
 
+<?php $fields->number('button_padding_vertical', 'Button Padding Vertical (px)', ['default' => 10]) ?>
+
+<?php $fields->number('button_padding_horizontal', 'Button Padding Horizontal (px)', ['default' => 25]) ?>
+
 <?php $fields->font('button_font', 'Button Font', ['family_default' => true, 'size_default' => true, 'weight_default' => true, 'color_default' => false]) ?>
 
 <?php 

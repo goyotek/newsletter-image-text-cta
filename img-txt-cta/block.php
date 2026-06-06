@@ -2,7 +2,7 @@
 /*
  * Name: Image Text CTA
  * Section: content
- * Description: A block with an image, title, subtitle, text, and a CTA button
+ * Description: A block with an image, title, text, and a CTA button in a single container
  */
 
 /* @var $options array */
@@ -10,18 +10,29 @@
 // On future releases of Newsletter, default options will be part of the options.php
 // file, it is the best place to have them. By now, be patience.
 
-// The "block_*" options are reserved and could be processed dutrectly by Newsletter. For example the
-// "block_background" and "block_padding_*" are used to generated the wrapper of the block content.
+// The "block_*" options are reserved and could be processed directly by Newsletter. For example the
+// "block_background" and "block_padding_*" are used to generate the wrapper of the block content.
 
 $default_options = array(
     'title' => 'Your stunning title',
     'text' => 'Your nice text to describe whatever you want to describe.',
+    'button_text' => 'Click Here',
+    'button_link' => '#',
+    'button_background' => '#b31e55',
+    'button_color' => '#f3f6f4',
+    'button_padding_vertical' => 10,
+    'button_padding_horizontal' => 25,
 
     'block_padding_left' => 15,
     'block_padding_right' => 15,
     'block_padding_top' => 15,
     'block_padding_bottom' => 15,
     'block_background' => '', // Leave empty to use the block background set on the newsletter settings
+
+    'title_padding_top' => 0,
+    'title_padding_bottom' => 20,
+    'text_padding_top' => 0,
+    'text_padding_bottom' => 20,
 );
 
 $options = array_merge($default_options, $options);
@@ -30,7 +41,7 @@ $options = array_merge($default_options, $options);
 // that is configured in the block and what is configured in the newsletter settings. When a block font option is set to "default" the
 // global value is used.
 // The methods ask for: the block options, the option prefix to identify the block font settings (if the prefix is "title" the method will
-// look for options starting with "title_font_*". Then they need the $composer which contains the global options. The method "get_title_style"
+// look for options starting with "title_font_*" . Then they need the $composer which contains the global options. The method "get_title_style"
 // takes from the global options the general style for titles and the method get_text_style takes from the global options the 
 // general style for text.
 
@@ -42,7 +53,7 @@ $text_style = TNP_Composer::get_text_style($options, 'text', $composer);
 
 $media = null;
 if (!empty($options['image']['id'])) {
-    // The $media is an onject containing the image URL and the size to specify in the HTML tag. The image is resized at
+    // The $media is an object containing the image URL and the size to specify in the HTML tag. The image is resized at
     // 2x to be sharp on mobile devices.
     $media = tnp_resize_2x($options['image']['id'], [$composer['width'], 0]);
     // Should never happen but... it happens
@@ -57,7 +68,7 @@ if (!empty($options['image']['id'])) {
 ?>
 
 <?php
-// Here we define a single block style with classes that are then transoformed in inline styles. Style for fonts can be easily generated with
+// Here we define a single block style with classes that are then transformed in inline styles. Style for fonts can be easily generated with
 // the object created above. The style block is REMOVED on rendering.
 ?>
 <style>
@@ -74,24 +85,37 @@ if (!empty($options['image']['id'])) {
 // The attribute "inline-class" is then replaced with a "style" attribute with all rules of the referenced class. 
 ?>
 
-<?php if ($media) echo TNP_Composer::image($media) ?>
+<!-- Single container for the entire block -->
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="border-collapse: collapse; width: 100%; background-color: <?php echo esc_attr($options['block_background']); ?>; padding: <?php echo esc_attr($options['block_padding_top']); ?>px <?php echo esc_attr($options['block_padding_right']); ?>px <?php echo esc_attr($options['block_padding_bottom']); ?>px <?php echo esc_attr($options['block_padding_left']); ?>px;">
+    <tbody>
+        <tr>
+            <td align="center" style="padding: 0;">
+                <!-- Image -->
+                <?php if ($media) echo TNP_Composer::image($media) ?>
 
-<h1 inline-class="title"><?php echo $options['title']?></h1>
+                <!-- Title with padding -->
+                <h1 inline-class="title" style="margin: <?php echo esc_attr($options['title_padding_top']); ?>px 0 <?php echo esc_attr($options['title_padding_bottom']); ?>px 0;"><?php echo $options['title']?></h1>
 
-<p inline-class="text"><?php echo $options['text']?></p>
+                <!-- Text with padding -->
+                <p inline-class="text" style="margin: <?php echo esc_attr($options['text_padding_top']); ?>px 0 <?php echo esc_attr($options['text_padding_bottom']); ?>px 0;"><?php echo $options['text']?></p>
 
-<?php if (!empty($options['button_text'])): ?>
-    <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate !important; line-height: 100%; width: auto; margin-top: 20px;">
-        <tbody>
-            <tr>
-                <td align="center" bgcolor="<?php echo esc_attr($options['button_background'] ?? '#b31e55'); ?>" role="presentation" style="border-collapse: separate !important; cursor: auto; mso-padding-alt: 10px 25px; background: <?php echo esc_attr($options['button_background'] ?? '#b31e55'); ?>; border-radius: 0px; border: 1px solid #bcbcbc;" valign="middle">
-                    <a href="<?php echo esc_url($options['button_link'] ?? '#'); ?>"
-                       style="display: inline-block; color: <?php echo esc_attr($options['button_color'] ?? '#f3f6f4'); ?>; font-family: <?php echo esc_attr($options['button_font_family'] ?? 'Lucida Sans Unicode, sans-serif'); ?>; font-size: <?php echo esc_attr($options['button_font_size'] ?? '16px'); ?>; font-weight: <?php echo esc_attr($options['button_font_weight'] ?? 'normal'); ?>; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 0px; width: auto;"
-                       target="_blank">
-                        <?php echo esc_html($options['button_text'] ?? 'Click Here'); ?>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<?php endif; ?>
+                <!-- Button -->
+                <?php if (!empty($options['button_text'])): ?>
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate !important; line-height: 100%; width: auto; margin-top: 20px;">
+                        <tbody>
+                            <tr>
+                                <td align="center" bgcolor="<?php echo esc_attr($options['button_background']); ?>" role="presentation" style="border-collapse: separate !important; cursor: auto; mso-padding-alt: <?php echo esc_attr($options['button_padding_vertical']); ?>px <?php echo esc_attr($options['button_padding_horizontal']); ?>px; background: <?php echo esc_attr($options['button_background']); ?>; border-radius: 0px; border: 1px solid #bcbcbc;" valign="middle">
+                                    <a href="<?php echo esc_url($options['button_link']); ?>"
+                                       style="display: inline-block; color: <?php echo esc_attr($options['button_color']); ?>; font-family: <?php echo esc_attr($options['button_font_family'] ?? 'Lucida Sans Unicode, sans-serif'); ?>; font-size: <?php echo esc_attr($options['button_font_size'] ?? '16px'); ?>; font-weight: <?php echo esc_attr($options['button_font_weight'] ?? 'normal'); ?>; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: <?php echo esc_attr($options['button_padding_vertical']); ?>px <?php echo esc_attr($options['button_padding_horizontal']); ?>px; mso-padding-alt: 0px; border-radius: 0px; width: auto;"
+                                       target="_blank">
+                                        <?php echo esc_html($options['button_text']); ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </td>
+        </tr>
+    </tbody>
+</table>
