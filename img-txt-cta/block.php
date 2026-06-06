@@ -79,3 +79,19 @@ if (!empty($options['image']['id'])) {
 <h1 inline-class="title"><?php echo $options['title']?></h1>
 
 <p inline-class="text"><?php echo $options['text']?></p>
+
+<?php if (!empty($options['button_text'])): ?>
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate !important; line-height: 100%; width: auto; margin-top: 20px;">
+        <tbody>
+            <tr>
+                <td align="center" bgcolor="<?php echo esc_attr($options['button_background'] ?? '#b31e55'); ?>" role="presentation" style="border-collapse: separate !important; cursor: auto; mso-padding-alt: 10px 25px; background: <?php echo esc_attr($options['button_background'] ?? '#b31e55'); ?>; border-radius: 0px; border: 1px solid #bcbcbc;" valign="middle">
+                    <a href="<?php echo esc_url($options['button_link'] ?? '#'); ?>"
+                       style="display: inline-block; color: <?php echo esc_attr($options['button_color'] ?? '#f3f6f4'); ?>; font-family: <?php echo esc_attr($options['button_font_family'] ?? 'Lucida Sans Unicode, sans-serif'); ?>; font-size: <?php echo esc_attr($options['button_font_size'] ?? '16px'); ?>; font-weight: <?php echo esc_attr($options['button_font_weight'] ?? 'normal'); ?>; line-height: 120%; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 0px; width: auto;"
+                       target="_blank">
+                        <?php echo esc_html($options['button_text'] ?? 'Click Here'); ?>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<?php endif; ?>
