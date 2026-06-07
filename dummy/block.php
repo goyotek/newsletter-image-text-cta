@@ -26,18 +26,6 @@ $default_options = array(
 
 $options = array_merge($default_options, $options);
 
-// Ok, this is a bit tricky and should be improved. $title_style and $text_style are object containing the merged font style between
-// that is configured in the block and what is configured in the newsletter settings. When a block font option is set to "default" the
-// global value is used.
-// The methods ask for: the block options, the option prefix to identify the block font settings (if the prefix is "title" the method will
-// look for options starting with "title_font_*". Then they need the $composer which contains the global options. The method "get_title_style"
-// takes from the global options the general style for titles and the method get_text_style takes from the global options the 
-// general style for text.
-
-$title_style = TNP_Composer::get_title_style($options, 'title', $composer);
-$text_style = TNP_Composer::get_text_style($options, 'text', $composer);
-
-
 // Image preparation (again, that is a bit tricky...)
 
 $media = null;
@@ -61,12 +49,8 @@ if (!empty($options['image']['id'])) {
 // the object created above. The style block is REMOVED on rendering.
 ?>
 <style>
-    .title {
-        <?php $title_style->echo_css() ?>
-    }
-    
     .text {
-        <?php $text_style->echo_css() ?>
+        padding: 10px 15px 10px 15px;
     }
 </style>
 
@@ -74,7 +58,7 @@ if (!empty($options['image']['id'])) {
 // The attribute "inline-class" is then replaced with a "style" attribute with all rules of the referenced class. 
 ?>
 
-<h1 inline-class="title"><?php echo $options['title']?></h1>
+<h1><?php echo $options['title']?></h1>
 
 <?php
 // This methos deal with CSS, attributes, link and so on. 
