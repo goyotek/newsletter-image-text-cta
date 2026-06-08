@@ -1,13 +1,11 @@
 <?php
 /*
-  Plugin Name: Newsletter - Dummy Block
-  Plugin URI: https://www.thenewsletterplugin.com
-  Description: A dummy block for the Newsletter composer
+  Plugin Name: Newsletter - Custom Blocks
+  Description: Custom blocks for the Newsletter composer
   Version: 1.0.0
-  Author: The Newsletter Team
-  Author URI: https://www.thenewsletterplugin.com
+  Author: Gregor Kleczkowski
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
-  Text Domain: newsletter-rss-block
+  Text Domain: newsletter-custom-blocks
   License: GPLv2 or later
   Requires PHP: 5.6
   Requires at least: 5.0.0
@@ -18,8 +16,10 @@
 // The action is fired only when Newsletter needs the blocks so there is no overhead.
 
 add_action('newsletter_register_blocks', function () {
-    // The registration function needs a folder where the block.php, the options.php the icon.png are located. 
+    // Register both blocks
     TNP_Composer::register_block(__DIR__ . '/dummy');
+    TNP_Composer::register_block(__DIR__ . '/img-txt-cta');
+    TNP_Composer::register_block(__DIR__ . '/img-txt');
 });
 
 
