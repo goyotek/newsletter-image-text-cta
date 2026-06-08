@@ -8,11 +8,29 @@
  */
 ?>
 
+<?php $fields->media('image', 'Image') ?>
+
 <?php $fields->text('title', 'Title') ?>
+
+<?php $fields->font('title_font', 'Title font', ['family_default' => true, 'size_default' => true, 'weight_default' => true]) ?>
 
 <?php $fields->textarea('text', 'Text') ?>
 
-<?php $fields->media('image', 'Image') ?>
+<?php $fields->font('text_font', 'Text font', ['align' => true, 'family_default' => true, 'size_default' => true, 'weight_default' => true]) ?>
+
+<?php $fields->text('button_text', 'Button Text') ?>
+
+<?php $fields->url('button_link', 'Button Link') ?>
+
+<?php $fields->color('button_background', 'Button Background Color') ?>
+
+<?php $fields->color('button_color', 'Button Text Color') ?>
+
+<?php $fields->number('button_padding_vertical', 'Button Padding Vertical (px)', ['default' => 10]) ?>
+
+<?php $fields->number('button_padding_horizontal', 'Button Padding Horizontal (px)', ['default' => 25]) ?>
+
+<?php $fields->font('button_font', 'Button Font', ['family_default' => true, 'size_default' => true, 'weight_default' => true, 'color_default' => false]) ?>
 
 <?php 
 // Always add that at the bottom: it generates a set of options automatically processed by Newsletter 
