@@ -2,7 +2,7 @@
 /*
   Plugin Name: Newsletter - Custom Blocks
   Description: Custom blocks for the Newsletter composer
-  Version: 1.0.0
+  Version: 1.0.7
   Author: Gregor Kleczkowski
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
   Text Domain: newsletter-custom-blocks
